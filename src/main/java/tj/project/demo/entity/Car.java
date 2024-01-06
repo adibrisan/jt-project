@@ -1,9 +1,7 @@
 package tj.project.demo.entity;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -31,4 +29,9 @@ public class Car {
     private double torque;
     private int trunkVolume;
     private int price;
+
+    @ManyToOne
+    @JoinColumn(name = "user_id", referencedColumnName = "userId",insertable = false,updatable = false)
+    @JsonIgnore
+    private User user;
 }
