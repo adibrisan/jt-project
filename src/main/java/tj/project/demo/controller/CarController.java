@@ -33,4 +33,9 @@ public class CarController {
     public ResponseEntity<Car> updateCar(@PathVariable String registrationNumber,@RequestBody Car car){
         return carService.updateCar(registrationNumber,car);
     }
+
+    @GetMapping("/filter-cars")
+    public List<Car> getFilteredCars(@RequestParam(required = false) String brand,@RequestParam(required = false) String color,@RequestParam(required = false) Integer year) {
+        return carService.getFilteredCars(brand,color,year);
+    }
 }

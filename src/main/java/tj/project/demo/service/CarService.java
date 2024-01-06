@@ -1,11 +1,13 @@
 package tj.project.demo.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.jpa.domain.Specification;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import tj.project.demo.entity.Car;
 import tj.project.demo.repository.CarRepository;
+import tj.project.demo.specification.CarSpecifications;
 
 import java.util.List;
 import java.util.Optional;
@@ -48,6 +50,12 @@ public class CarService {
             return ResponseEntity.ok(updatedCar);
         }
         return ResponseEntity.notFound().build();
+    }
+
+    // interogation
+    public List<Car> getFilteredCars(String brand, String color, Integer year) {
+        Specification<Car> spec = CarSpecifications.filterByBrandColorYear(brand, color, year);
+        return carRepository.findAll(spec);
     }
 
 }
