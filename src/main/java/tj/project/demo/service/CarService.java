@@ -53,8 +53,8 @@ public class CarService {
     }
 
     // interogation
-    public List<Car> getFilteredCars(String brand, String color, Integer year) {
-        Specification<Car> spec = CarSpecifications.filterByBrandColorYear(brand, color, year);
+    public List<Car> getFilteredCars(String brand, String fuelType, Integer year) {
+        Specification<Car> spec = CarSpecifications.filterByBrandColorYear(brand, fuelType, year);
         return carRepository.findAll(spec);
     }
 

@@ -8,6 +8,7 @@ import tj.project.demo.service.CarService;
 
 import java.util.List;
 
+@CrossOrigin(origins = "*", allowedHeaders = "*")
 @RestController
 @RequestMapping("/api/cars")
 public class CarController {
@@ -35,7 +36,7 @@ public class CarController {
     }
 
     @GetMapping("/filter-cars")
-    public List<Car> getFilteredCars(@RequestParam(required = false) String brand,@RequestParam(required = false) String color,@RequestParam(required = false) Integer year) {
-        return carService.getFilteredCars(brand,color,year);
+    public List<Car> getFilteredCars(@RequestParam(required = false) String brand,@RequestParam(required = false) String fuelType,@RequestParam(required = false) Integer year) {
+        return carService.getFilteredCars(brand,fuelType,year);
     }
 }
